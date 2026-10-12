@@ -1,0 +1,5 @@
+node_modules/
+.next/
+engine/data/
+web/data/
+*.journal
