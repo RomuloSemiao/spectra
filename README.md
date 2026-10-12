@@ -36,8 +36,6 @@ docker compose up --build
 - Interface: <http://localhost:3000>
 - Motor, para depuração: <http://localhost:8080/base>
 
-Para experimentar, carrega um dos CSVs da pasta [`dados/`](dados/) na página **Analisar**.
-
 Na primeira execução, a base de conhecimento é criada a partir de `engine/seed.pl`: 6 planetas,
 14 espécies químicas com 29 bandas e as espécies reportadas nos artigos. Tudo o que fizeres
 depois (planetas novos, espectros carregados) fica guardado em volumes do Docker e sobrevive a
