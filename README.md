@@ -1,6 +1,6 @@
 # Spectra - Espectros de trânsito: sistema especialista
 
-Carregas um espectro de transmissão de um exoplaneta (CSV do NASA Exoplanet Archive) e o
+Carregas um espectro de transmissão de um exoplaneta (CSV do [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/cgi-bin/atmospheres/nph-firefly?atmospheres)) e o
 sistema diz a que planeta corresponde, que espécies químicas têm assinatura no espectro e
 porquê. O raciocínio corre num motor de inferência em **SWI-Prolog**. A interface e a parte
 numérica correm em **Next.js**.
