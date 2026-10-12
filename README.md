@@ -221,24 +221,17 @@ avisos do parser e σ de cada banda.
 
 ## Cópias de segurança
 
-A base e os espectros vivem nos volumes `kb-data` e `espectros-data`, fora do repositório: o
-`git push` não os envia. Para os copiar (PowerShell ou bash, na raiz do projeto, com os serviços
-criados):
+A base e os espectros vivem na pasta `backup/` (`backup/kb.journal` e `backup/espectros/`), montada
+diretamente nos containers. Os dados são lidos de lá no arranque e gravados lá em tempo real, por
+isso não há passo de restauro: basta `docker compose up -d`. A pasta fica fora do git
+(`*.journal` está no `.gitignore`), por isso copia-a para onde quiseres guardar o backup.
+
+Se tinhas dados nos antigos volumes `kb-data` / `espectros-data`, copia-os uma vez para a pasta
+antes de arrancar:
 
 ```bash
-mkdir backup
 docker compose cp engine:/data/kb.journal ./backup/kb.journal
-docker compose cp web:/data/espectros ./backup/espectros
-```
-
-Para restaurar:
-
-```bash
-docker compose up -d
-docker compose stop engine
-docker compose cp ./backup/kb.journal engine:/data/kb.journal
-docker compose cp ./backup/espectros web:/data/
-docker compose start engine
+docker compose cp web:/data/espectros ./backup/
 ```
 
 Conhecimento que deva acompanhar o código (planetas, espécies reportadas) deve passar para o

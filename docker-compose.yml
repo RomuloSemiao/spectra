@@ -2,7 +2,7 @@ services:
   engine:
     build: ./engine
     volumes:
-      - kb-data:/data              # base de conhecimento persistente
+      - ./backup:/data             # base de conhecimento persistente (backup/kb.journal)
     # porta exposta só para depuração (curl localhost:8080/base); podes remover
     ports:
       - "8080:8080"
@@ -19,14 +19,10 @@ services:
     environment:
       ENGINE_URL: http://engine:8080
     volumes:
-      - espectros-data:/data/espectros   # CSVs originais, para reabrir análises
+      - ./backup/espectros:/data/espectros   # CSVs originais, para reabrir análises
     ports:
       - "3000:3000"
     depends_on:
       engine:
         condition: service_healthy
     restart: unless-stopped
-
-volumes:
-  kb-data:
-  espectros-data:
